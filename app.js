@@ -122,8 +122,7 @@ d3.csv("./ipca2.csv").then(function (data) {
         .style("border-width", "2px")
         .style("border-radius", "5px")
         .style("padding", "5px")
-        .style("max-width", "620px")
-        .style("transform", "translateX(+18%)")
+        .style("max-width", "820px")
 
     // Tooltip
     var mouseover = function (d) {
@@ -131,6 +130,7 @@ d3.csv("./ipca2.csv").then(function (data) {
             .style("opacity", 1)
         d3.select(this)
             .style("stroke", "black")
+            .style("opacity", 1)
     }
     var mousemove = function (d) {
         Tooltip
