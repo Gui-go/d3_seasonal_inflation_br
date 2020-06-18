@@ -59,6 +59,7 @@ d3.csv("./ipca2.csv").then(function (data) {
         .attr("x2", function (d) { return (x(d.key)) })
         .attr("y1", function (d) { return (y(d.value.min)) })
         .attr("y2", function (d) { return (y(d.value.max)) })
+        .attr("stroke-width", "2")
         .attr("stroke", "black")
 
     // rectangle for the main box
@@ -72,6 +73,7 @@ d3.csv("./ipca2.csv").then(function (data) {
         .attr("y", function (d) { return (y(d.value.q3)) })
         .attr("height", function (d) { return (y(d.value.q1) - y(d.value.q3)) })
         .attr("width", boxWidth)
+        .attr("stroke-width", "1")
         .attr("stroke", "black")
         .style("fill", "#009502")
 
@@ -85,31 +87,8 @@ d3.csv("./ipca2.csv").then(function (data) {
         .attr("x2", function (d) { return (x(d.key) + boxWidth / 2) })
         .attr("y1", function (d) { return (y(d.value.median)) })
         .attr("y2", function (d) { return (y(d.value.median)) })
+        .attr("stroke-width", "3")
         .attr("stroke", "black")
-
-    // Show the mean line
-    svg
-        .selectAll("meanLines")
-        .data(stat)
-        .enter()
-        .append("line")
-        .attr("x1", function (d) { return (x(1)) })
-        .attr("x2", function (d) { return (x(12)) })
-        .attr("y1", y(data[0].mean))
-        .attr("y2", y(data[0].mean))
-        .attr("stroke", "red")
-
-    // Show the median line
-    svg
-        .selectAll("medianLines")
-        .data(stat)
-        .enter()
-        .append("line")
-        .attr("x1", function (d) { return (x(1)) })
-        .attr("x2", function (d) { return (x(12)) })
-        .attr("y1", y(data[0].median))
-        .attr("y2", y(data[0].median))
-        .attr("stroke", "blue")
 
     // create a tooltip
     var Tooltip = d3.select("#chart")
@@ -143,7 +122,7 @@ d3.csv("./ipca2.csv").then(function (data) {
         d3.select(this)
             .style("fill", "gray")
             .style("stroke", "#000")
-            .style("opacity", 0.3)
+            .style("opacity", 0.6)
     }
 
     // Points with jitter
@@ -157,10 +136,37 @@ d3.csv("./ipca2.csv").then(function (data) {
         .attr("cy", function (d) { return (y(d.ipca)) })
         .attr("r", 4)
         .style("fill", "gray")
-        .style("opacity", .3)
+        .style("opacity", .6)
         .attr("stroke", "#000")
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
+
+    // Show the mean line
+    svg
+        .selectAll("meanLines")
+        .data(stat)
+        .enter()
+        .append("line")
+        .attr("x1", function (d) { return (x(1)) })
+        .attr("x2", function (d) { return (x(12)) })
+        .attr("y1", y(data[0].mean))
+        .attr("y2", y(data[0].mean))
+        .attr("stroke-width", "3")
+        .attr("stroke", "red")
+
+    // Show the median line
+    svg
+        .selectAll("medianLines")
+        .data(stat)
+        .enter()
+        .append("line")
+        .attr("x1", function (d) { return (x(1)) })
+        .attr("x2", function (d) { return (x(12)) })
+        .attr("y1", y(data[0].median))
+        .attr("y2", y(data[0].median))
+        .attr("stroke-width", "3")
+        .attr("stroke", "blue")
+
 
 })
