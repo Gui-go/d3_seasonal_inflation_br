@@ -1,4 +1,11 @@
-#chart{
-    color: #000
+.grid {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
 }
 
+#sig {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 90px;
+}
