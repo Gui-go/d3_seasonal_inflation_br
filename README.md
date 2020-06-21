@@ -6,3 +6,6 @@ Autor: Guilherme Viegas
 Tema: Economia, inflação, D3.js, Python, githubPages
 
 Dado: BCB/433
+
+Versão servida por github pages:
+https://gui-go.github.io/d3_seasonal_inflation_br/
